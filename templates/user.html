@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>User {{this_user[0].first_name}}</h1>
+    <a style='display: inline; margin-left: 200px;'href="/">Home</a>
+    <p>First Name:{{this_user[0]['first_name']}} Last Name:{{this_user[0].last_name}}</p>
+    <p>EMAIL:{{this_user[0].email}}</p>
+    <a href="/users/{{this_user[0].id}}/del">DELETE</a>
+    <a href="/users/new"> add a user </a>
+</body>
+</html>
