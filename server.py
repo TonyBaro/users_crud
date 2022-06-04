@@ -13,6 +13,12 @@ def index():
 def new():
     return render_template('newuser.html')
 
+@app.route('/users/<idnum>/edit')
+def edit_user(idnum):
+    data ={'idnum':(idnum)}
+    user = User.retrieve_user(data)
+    return render_template("updateuser.html" , idnum = idnum, this_user = user)
+
 @app.route('/add_user' , methods=["POST"])
 def add():
     data = {
@@ -35,7 +41,19 @@ def one_user(idnum):
     data ={'idnum':(idnum)}
     user = User.retrieve_user(data)
     print(user)
-    return render_template('user.html', this_user = user, idnum=(idnum))
+    return render_template('user.html', this_user = user,)
+
+@app.route('/users/<idnum>/update' , methods=["POST"])
+def update_user(idnum):
+    data = {
+        'fname': request.form['fname'],
+        'lname': request.form['lname'],
+        'email': request.form['email'],
+        'id': request.form['idnum']
+    }
+    print(data)
+    User.update_user(data)
+    return redirect(f'/users/{idnum}')
 
 
 
